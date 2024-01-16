@@ -10,6 +10,11 @@ import EJS from "./icons/EJS.astro";
 import Electron from "./icons/Electron.astro";
 import ExpressJS from "./icons/ExpressJS.astro";
 import Bootstrap from "./icons/Bootstrap.astro";
+import Icon from "./Icon.astro";
+import GitHub from "./icons/GitHubIcon.astro";
+import Link from "./icons/Link.astro";
+import Bulma from "./icons/Bulma.astro";
+import StreamChat from "./icons/StreamChat.astro";
 
 const TAGS = {
   NEXT: {
@@ -24,12 +29,12 @@ const TAGS = {
   },
   NODE: {
     name: "Nodejs",
-    class: "bg-[#69c754] text-white",
+    class: "bg-[#07702a] text-white",
     icon: Nodejs,
   },
   REACT: {
     name: "React",
-    class: "bg-[#61dafb] text-black",
+    class: "bg-[#166e7e] text-white",
     icon: React,
   },
   CSS: {
@@ -64,8 +69,18 @@ const TAGS = {
   },
   BOOTSTRAP: {
     name: "Bootstrap",
-    class: "bg-[#8730eb] text-white",
+    class: "bg-[#48009b] text-white",
     icon: Bootstrap,
+  },
+  BULMA: {
+    name: "Bulma",
+    class: "bg-[#107c8f] text-white",
+    icon: Bulma,
+  },
+  STREAMCHAT: {
+    name: "StreamChat",
+    class: "bg-[#004ab1] text-white",
+    icon: StreamChat,
   },
 };
 const PROJECTS = [
@@ -76,25 +91,43 @@ const PROJECTS = [
     link: "https://drive.google.com/file/d/10IYTfZKYZA9uV8uWzYLsjdJ5XPVrGY_G/view?usp=drive_link",
     github: "https://github.com/escalandres/myyt-downloader",
     image: "/projects/myyt_downloader.webp",
-    tags: [TAGS.NODE, TAGS.BOOTSTRAP, TAGS.ELECTRON],
+    tags: [TAGS.NODE, TAGS.BOOTSTRAP, TAGS.ELECTRON, TAGS.EXPRESSJS],
+  },
+  {
+    title: "Chat App Project - Personal chat app",
+    description:
+      "Aplicacion de Chat en tiempo real, inspirada en discord, creada con React, NodeJS, Stream Chat y Bulma",
+    link: "https://chat-app-project-ing-web.netlify.app/",
+    github: "https://github.com/escalandres/ChatAppProject",
+    image: "/projects/chatApp.webp",
+    tags: [TAGS.NODE, TAGS.REACT, TAGS.BULMA, TAGS.STREAMCHAT, TAGS.EXPRESSJS],
+  },
+  {
+    title: "PokeApi - Pokemon app",
+    description:
+      "Aplicacion de Chat en tiempo real, inspirada en discord, creada con React, NodeJS, Stream Chat y Bulma",
+    link: "https://chat-app-project-ing-web.netlify.app/",
+    github: "https://github.com/escalandres/ChatAppProject",
+    image: "/projects/chatApp.webp",
+    tags: [TAGS.NODE, TAGS.REACT, TAGS.BULMA, TAGS.STREAMCHAT, TAGS.EXPRESSJS],
   },
 ];
 ---
 
 {
-  PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
+  PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="mb-8">
       <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
         {title}
       </h3>
       <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
+      <ul class="flex gap-x-2 flex-row mb-4">
         {tags.map((tag) => (
           <li>
             <span
               class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
             >
-              <tag.icon class="size-2" />
+              <tag.icon class="size-4" />
               {tag.name}
             </span>
           </li>
@@ -106,6 +139,14 @@ const PROJECTS = [
         src={image}
         alt={`Captura de pantalla del proyecto ${image}`}
       />
+      <nav class="flex gap-4 mt-4 flex-wrap">
+        <Icon href={github}>
+          <GitHub class="size-4 md:size-6" /> Repositorio
+        </Icon>
+        <Icon href={link}>
+          <Link class="size-4 md:size-6" /> Link
+        </Icon>
+      </nav>
     </article>
   ))
 }
