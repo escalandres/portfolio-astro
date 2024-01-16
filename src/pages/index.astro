@@ -4,6 +4,7 @@ import SectionContainer from "../components/SectionContainer.astro";
 import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Icon from "../components/Icon.astro";
+import Projects from "../components/Projects.astro";
 
 import LinkedIn from "../components/icons/LinkedIn.astro";
 import GitHub from "../components/icons/GitHubIcon.astro";
@@ -11,6 +12,7 @@ import Mail from "../components/icons/Mail.astro";
 import CV from "../components/icons/CV.astro";
 import Briefcase from "../components/icons/Briefcase.astro";
 import School from "../components/icons/School.astro";
+import Code from "../components/icons/Code.astro";
 ---
 
 <Layout title="Portfolio de Andres Escala - Desarrollador web">
@@ -60,7 +62,10 @@ import School from "../components/icons/School.astro";
         <Icon href="mailto:andres.escala.344@gmail.com">
           <Mail class="size-4 md:size-6" /> andres.escala.344@gmail.com
         </Icon>
-        <Icon href="/CV_AndresEscala.es.pdf" download="cv_andres-escala.pdf">
+        <Icon
+          href="/docs/CV_AndresEscala.es.pdf"
+          download="cv_andres-escala.pdf"
+        >
           <CV class="size-4 md:size-6" /> Descargar CV
         </Icon>
       </nav>
@@ -81,6 +86,15 @@ import School from "../components/icons/School.astro";
         Educación
       </h2>
       <Education />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <Code class="size-7" />
+        Proyectos
+      </h2>
+      <Projects />
     </SectionContainer>
   </main>
 </Layout>

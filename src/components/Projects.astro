@@ -9,6 +9,7 @@ import JavaScript from "./icons/JavaScript.astro";
 import EJS from "./icons/EJS.astro";
 import Electron from "./icons/Electron.astro";
 import ExpressJS from "./icons/ExpressJS.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
 
 const TAGS = {
   NEXT: {
@@ -61,16 +62,21 @@ const TAGS = {
     class: "bg-[#000000] text-white",
     icon: ExpressJS,
   },
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "bg-[#8730eb] text-white",
+    icon: Bootstrap,
+  },
 };
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "MyYT_Downloader - Youtube videos downloader",
     description:
-      "Created from scratch with Next.js and Tailwind CSS. It's a library with SVG logos from the most popular brands. Optimized for SEO and performance.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "A personal youtube videos downloader app developed on NodeJS and ElectronJS",
+    link: "https://drive.google.com/file/d/10IYTfZKYZA9uV8uWzYLsjdJ5XPVrGY_G/view?usp=drive_link",
+    github: "https://github.com/escalandres/myyt-downloader",
+    image: "/projects/myyt_downloader.webp",
+    tags: [TAGS.NODE, TAGS.BOOTSTRAP, TAGS.ELECTRON],
   },
 ];
 ---
@@ -88,7 +94,7 @@ const PROJECTS = [
             <span
               class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
             >
-              <tag.icon class="size-4" />
+              <tag.icon class="size-2" />
               {tag.name}
             </span>
           </li>
