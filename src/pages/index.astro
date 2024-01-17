@@ -5,7 +5,7 @@ import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Icon from "../components/Icon.astro";
 import Projects from "../components/Projects.astro";
-
+import ContactMe from "../components/ContactMe.astro";
 import LinkedIn from "../components/icons/LinkedIn.astro";
 import GitHub from "../components/icons/GitHubIcon.astro";
 import Mail from "../components/icons/Mail.astro";
@@ -95,6 +95,15 @@ import Code from "../components/icons/Code.astro";
         Proyectos
       </h2>
       <Projects />
+    </SectionContainer>
+    <SectionContainer id="contact-me">
+      <h2
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
+      >
+        <Mail class="size-7" />
+        Contacta me
+      </h2>
+      <ContactMe />
     </SectionContainer>
   </main>
 </Layout>
