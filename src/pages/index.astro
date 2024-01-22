@@ -6,6 +6,9 @@ import Education from "../components/Education.astro";
 import Icon from "../components/Icon.astro";
 import Projects from "../components/Projects.astro";
 import Skills from "../components/Skills.astro";
+import Toast from "../components/Toast.astro";
+import Button from "../components/Button.astro";
+
 import ContactMe from "../components/ContactMe.astro";
 import LinkedIn from "../components/icons/LinkedIn.astro";
 import GitHub from "../components/icons/GitHubIcon.astro";
@@ -61,9 +64,12 @@ import Laptop from "../components/icons/Laptop.astro";
         <Icon href="https://github.com/escalandres">
           <GitHub class="size-4 md:size-6" /> GitHub
         </Icon>
-        <Icon href="mailto:andres.escala.344@gmail.com">
+        <!-- <Icon id="copy-btn">
           <Mail class="size-4 md:size-6" /> andres.escala.344@gmail.com
-        </Icon>
+        </Icon> -->
+        <Button id="copy-btn">
+          <Mail class="size-4 md:size-6" /> andres.escala.344@gmail.com
+        </Button>
         <Icon
           href="/docs/CV_AndresEscala.es.pdf"
           download="cv_andres-escala.pdf"
@@ -117,4 +123,5 @@ import Laptop from "../components/icons/Laptop.astro";
       <ContactMe />
     </SectionContainer>
   </main>
+  <Toast type="" message="¡Correo copiado al portapapeles!" />
 </Layout>
