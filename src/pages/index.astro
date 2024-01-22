@@ -23,38 +23,44 @@ import Laptop from "../components/icons/Laptop.astro";
 <Layout title="Portfolio de Andres Escala - Desarrollador web">
   <main class="px-4">
     <SectionContainer class="py-28 pb-32" id="about-me">
-      <img
-        class="rounded-full size-12 mr-4"
-        src="/andres.jpg"
-        alt="andres escala"
-      />
-      <h1
-        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 py-4"
-      >
-        Hey, soy Andres Escala
-        <a
-          class="flex justify-center items-center"
-          href="https://www.linkedin.com/in/andres-rafael-escala-acosta-2b98a4222/"
-          target="_blank"
-          rel="noopener"
-          ><span
-            class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
-            >Disponible para trabajar</span
-          ></a
-        >
-      </h1>
-      <h2
-        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
-      >
-        <span>+2 años de experiencia.</span><span
-          class="text-blue-800 dark:text-blue-200"
-        >
-          Desarrollador Web e Ingeniero Telemático.
-        </span>
-        <span class="text-red-800 dark:text-red-200">
-          Ciudad de México, México
-        </span>
-      </h2>
+      <div class="flex row">
+        <div class="flex flex-col w1-/2">
+          <img
+            class="rounded-full size-40 mr-4"
+            src="/andres.jpg"
+            alt="andres escala"
+          />
+        </div>
+        <div class="flex flex-col w1-/2 pl-8">
+          <h1
+            class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 py-4"
+          >
+            ¡Hola mundo!, soy Andres
+            <a
+              class="flex justify-center items-center"
+              href="https://www.linkedin.com/in/andres-rafael-escala-acosta-2b98a4222/"
+              target="_blank"
+              rel="noopener"
+              ><span
+                class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
+                >Disponible para trabajar</span
+              ></a
+            >
+          </h1>
+          <h2
+            class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
+          >
+            <span>+2 años de experiencia.</span><span
+              class="text-blue-800 dark:text-blue-200"
+            >
+              Desarrollador Web e Ingeniero Telemático.
+            </span>
+            <span class="text-red-800 dark:text-red-200">
+              Ciudad de México, México
+            </span>
+          </h2>
+        </div>
+      </div>
       <nav class="flex gap-4 mt-8 flex-wrap">
         <Icon
           href="https://www.linkedin.com/in/andres-rafael-escala-acosta-2b98a4222/"

@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Tu código aquí
     document.getElementById("copy-btn").addEventListener("click", () => {
-        alert("h");
         let texto = "andres.escala.344@gmail.com";
-        console.log(navigator)
         navigator.clipboard
             .writeText(texto)
             .then(() => {
-                console.log("¡Texto copiado al portapapeles!");
+                showNotification();
+                setTimeout(() => {
+                    hideNotification();
+                }, 2000);
             })
             .catch((err) => {
                 console.error("Error al intentar copiar el texto:", err);
