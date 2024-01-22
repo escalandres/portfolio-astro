@@ -1,0 +1,34 @@
+<style>
+  .transition-transform {
+    transition-property: transform;
+  }
+
+  .ease-in-out {
+    transition-timing-function: ease-in-out;
+  }
+</style>
+
+<div class="overflow-hidden w-full">
+  <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+    <!-- Tus imágenes van aquí -->
+    <img src="/projects/chatApp.webp" alt="Imagen 1" class="w-full" />
+    <img src="/projects/pokedex.webp" alt="Imagen 2" class="w-full" />
+    <img src="/projects/vaccine.webp" alt="Imagen 3" class="w-full" />
+  </div>
+</div>
+<script>
+  const carousel = document.getElementById("carousel");
+  let currentPosition = 0;
+
+  function slideLeft() {
+    currentPosition -= 100;
+    updateCarouselPosition();
+  }
+
+  function updateCarouselPosition() {
+    carousel.style.transform = `translateX(${currentPosition}%)`;
+  }
+
+  // Llama a slideLeft cada 2 segundos (ajusta según sea necesario)
+  setInterval(slideLeft, 2000);
+</script>
