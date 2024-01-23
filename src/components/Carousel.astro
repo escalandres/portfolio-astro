@@ -13,15 +13,18 @@ import Bootstrap from "./icons/Bootstrap.astro";
 import DotNet from "./icons/DotNet.astro";
 import SQLServer from "./icons/SQLServer.astro";
 import MongoDB from "./icons/MongoDB.astro";
+import Linux from "./icons/Linux.astro";
+import MySQL from "./icons/MySQL.astro";
+import Git from "./icons/GitIcon.astro";
 ---
 
 <style>
   .animate-infinite-scroll {
-    animation: infinite-scroll 25s linear infinite;
+    animation: infinite-scroll 20s linear infinite;
   }
   @keyframes infinite-scroll {
     0% {
-      transform: translate(0);
+      transform: translate(40%);
     }
     100% {
       transform: translate(-100%);
@@ -37,8 +40,28 @@ import MongoDB from "./icons/MongoDB.astro";
   >
     <li><HTML alt="HTML" class="size-20" /></li>
     <li><CSS alt="CSS" class="size-20" /></li>
+    <li><JavaScript alt="JS" class="size-20" /></li>
+    <li><Bootstrap alt="Bootstrap" class="size-20" /></li>
     <li><Tailwind alt="Tailwind" class="size-20" /></li>
+    <li><DotNet alt=".NET" class="size-20" /></li>
+    <li><SQLServer alt="SQL Server" class="size-20" /></li>
     <li><Nodejs alt="Nodejs" class="size-20" /></li>
     <li><React alt="React" class="size-20" /></li>
+    <li><Git alt="Git" class="size-20" /></li>
+    <li><MongoDB alt="MongoDB" class="size-20" /></li>
+    <li><Linux alt="Linux" class="size-20" /></li>
+    <!-- <li><ExpressJS alt="Linux" class="size-20" /></li>
+    <li><EJS alt="Linux" class="size-20" /></li>
+    <li><Electron alt="Linux" class="size-20" /></li> -->
   </ul>
+  <!-- <ul
+    class="flex items-center justify-center md:justify-start [&_li]:mx-2 xl:[&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+  >
+    <li><SQLServer alt="SQL Server" class="size-20" /></li>
+    <li><Nodejs alt="Nodejs" class="size-20" /></li>
+    <li><React alt="React" class="size-20" /></li>
+    <li><Git alt="Git" class="size-20" /></li>
+    <li><MongoDB alt="MongoDB" class="size-20" /></li>
+    <li><Linux alt="Linux" class="size-20" /></li>
+  </ul> -->
 </div>

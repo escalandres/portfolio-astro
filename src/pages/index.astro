@@ -62,7 +62,7 @@ import Laptop from "../components/icons/Laptop.astro";
           </h2>
         </div>
       </div>
-      <nav class="flex gap-4 mt-8 flex-wrap">
+      <nav class="flex gap-4 mt-8 flex-wrap mb-16">
         <Icon
           href="https://www.linkedin.com/in/andres-rafael-escala-acosta-2b98a4222/"
         >
@@ -84,6 +84,7 @@ import Laptop from "../components/icons/Laptop.astro";
           <CV class="size-4 md:size-6" /> Descargar CV
         </Icon>
       </nav>
+      <Carousel />
     </SectionContainer>
     <SectionContainer id="experiencia">
       <h2
@@ -110,16 +111,6 @@ import Laptop from "../components/icons/Laptop.astro";
         Proyectos
       </h2>
       <Projects />
-    </SectionContainer>
-    <SectionContainer id="skills">
-      <h2
-        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-black/80 dark:text-white/80"
-      >
-        <Laptop class="size-7" />
-        Tecnologías
-      </h2>
-      <!-- <Skills /> -->
-      <Carousel />
     </SectionContainer>
     <SectionContainer id="contact-me">
       <h2
