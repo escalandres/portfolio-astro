@@ -1,0 +1,44 @@
+---
+import Tailwind from "./icons/Tailwind.astro";
+import Nodejs from "./icons/Nodejs.astro";
+import React from "./icons/React.astro";
+import HTML from "./icons/HTML.astro";
+import NextJS from "./icons/NextJS.astro";
+import CSS from "./icons/CSS.astro";
+import JavaScript from "./icons/JavaScript.astro";
+import EJS from "./icons/EJS.astro";
+import Electron from "./icons/Electron.astro";
+import ExpressJS from "./icons/ExpressJS.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
+import DotNet from "./icons/DotNet.astro";
+import SQLServer from "./icons/SQLServer.astro";
+import MongoDB from "./icons/MongoDB.astro";
+---
+
+<style>
+  .animate-infinite-scroll {
+    animation: infinite-scroll 25s linear infinite;
+  }
+  @keyframes infinite-scroll {
+    0% {
+      transform: translate(0);
+    }
+    100% {
+      transform: translate(-100%);
+    }
+  }
+</style>
+<div
+  class="inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] w-[250px] mx-[calc((100%-250px)/2)] md:w-[750px] md:mx-[calc((100%-750px)/2)]"
+>
+  <!-- Primer conjunto de logos -->
+  <ul
+    class="flex items-center justify-center md:justify-start [&_li]:mx-2 xl:[&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+  >
+    <li><HTML alt="HTML" class="size-20" /></li>
+    <li><CSS alt="CSS" class="size-20" /></li>
+    <li><Tailwind alt="Tailwind" class="size-20" /></li>
+    <li><Nodejs alt="Nodejs" class="size-20" /></li>
+    <li><React alt="React" class="size-20" /></li>
+  </ul>
+</div>
