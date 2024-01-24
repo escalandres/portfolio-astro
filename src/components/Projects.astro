@@ -134,7 +134,7 @@ const PROJECTS = [
     title: "Pixel Guardian",
     description: "Mini juego desarrollado para Android y Windows",
     link: "https://drive.google.com/drive/folders/1RFRAtVPoocVixAnOhCXb8PhnFbyPV_vD",
-    github: "#",
+    github: "",
     image: "/projects/pixel-guardian.webp",
     tags: [TAGS.UNITY, TAGS.CSHARP],
   },
@@ -167,9 +167,11 @@ const PROJECTS = [
         alt={`Captura de pantalla del proyecto ${image}`}
       />
       <nav class="flex gap-4 mt-4 flex-wrap">
-        <Icon href={github}>
-          <GitHub class="size-4 md:size-6" /> Repositorio
-        </Icon>
+        {github !== "" ? (
+          <Icon href={github}>
+            <GitHub class="size-4 md:size-6" /> Repositorio
+          </Icon>
+        ) : null}
         <Icon href={link}>
           <Link class="size-4 md:size-6" /> Link
         </Icon>
