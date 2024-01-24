@@ -15,6 +15,8 @@ import GitHub from "./icons/GitHubIcon.astro";
 import Link from "./icons/Link.astro";
 import Bulma from "./icons/Bulma.astro";
 import StreamChat from "./icons/StreamChat.astro";
+import CSharp from "./icons/CSharp.astro";
+import Unity from "./icons/Unity.astro";
 
 const TAGS = {
   NEXT: {
@@ -82,6 +84,16 @@ const TAGS = {
     class: "bg-[#004ab1] text-white",
     icon: StreamChat,
   },
+  CSharp: {
+    name: "C#",
+    class: "bg-[#1f0547] text-white",
+    icon: CSharp,
+  },
+  Unity: {
+    name: "Unity",
+    class: "bg-[#000000] text-white",
+    icon: Unity,
+  },
 };
 const PROJECTS = [
   {
@@ -101,6 +113,14 @@ const PROJECTS = [
     github: "https://github.com/escalandres/ChatAppProject",
     image: "/projects/chatApp.webp",
     tags: [TAGS.NODE, TAGS.REACT, TAGS.BULMA, TAGS.STREAMCHAT, TAGS.EXPRESSJS],
+  },
+  {
+    title: "PokeApi - Pokemon app",
+    description: "Mini aplicación de pokedex creada con la API de pokemon",
+    link: "https://escalandres.github.io/LaunchX_JS/",
+    github: "https://github.com/escalandres/LaunchX_JS",
+    image: "/projects/pokedex.webp",
+    tags: [TAGS.JAVASCRIPT, TAGS.CSS, TAGS.HTML],
   },
   {
     title: "PokeApi - Pokemon app",
