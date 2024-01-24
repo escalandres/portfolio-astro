@@ -41,3 +41,20 @@ window.addEventListener('scroll', function () {
 
 });
 
+document.getElementById("submit-btn")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        let name = document.getElementById("floating_name");
+        console.log(name);
+        await fetch("/api/sendEmail.json", {
+          method: "POST",
+          body: JSON.stringify({
+            name: document.getElementById("floating_name")?.value,
+            email: document.getElementById("floating_email")?.value,
+            message: document.getElementById("floating_message")?.value,
+          }),
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    });
