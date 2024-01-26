@@ -6,11 +6,10 @@ export const POST: APIRoute = async ({params, request}) => {
     const body = await request.json();
     const { name, email, message } = body;
     const send = await resend.emails.send({
-        from: 'Acme <onboarding@resend.dev>',
+        from: 'Portfolio <onboarding@resend.dev>',
         to: ['aescalaa1900@alumno.ipn.mx'],
-        subject: 'hello world',
-        html: '<h1>1hello world</h1>',
-        text: `Nuevo contacto: ${name}, ${email}, ${message}`,
+        subject: 'Nuevo contacto',
+        html: `<h1>Nuevo contacto</h1><h3>Una persona ha contactado desde el portafolio</h3><p>Nombre: ${name}</p><p>Correo: ${email}</p><p>Mensaje: ${message}</p>`,
         // attachments: [
         //     {
         //     filename: 'invoice.pdf',
@@ -27,26 +26,21 @@ export const POST: APIRoute = async ({params, request}) => {
             },
         ],
     })
-
     if(send.data){
         return new Response(
             JSON.stringify({
-                message: send.data
-            }),
-            {
+                ok: true,
                 status: 200,
                 statusText: 'OK',
-            }
+            }),
         )
     }else{
         return new Response(
             JSON.stringify({
-                message: send.error
-            }),
-            {
+                ok: false,
                 status: 500,
                 statusText: 'Internal Server Error',
-            }
+            }),
         )
     }
   }
