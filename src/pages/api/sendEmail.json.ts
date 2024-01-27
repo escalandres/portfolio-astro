@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({params, request}) => {
             JSON.stringify({
                 ok: true,
                 status: 200,
-                statusText: 'OK',
+                statusText: 'Email sent',
             }),
         )
     }else{
@@ -43,4 +43,4 @@ export const POST: APIRoute = async ({params, request}) => {
             }),
         )
     }
-  }
+}
