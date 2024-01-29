@@ -78,7 +78,7 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
         setTimeout(() => {
             hideNotification();
             document.getElementById('toast-message').innerHTML = "¡Correo copiado al portapapeles!";
-        }, 2000);
+        }, 3000);
       } catch (error) {
         console.log(error);
       }
