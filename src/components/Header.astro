@@ -1,81 +1,46 @@
-<nav id="navbar" class="backdrop-blur-sm fixed w-full z-20 top-0 start-0">
-  <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-  >
-    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/favicon.svg" class="h-8" alt="Flowbite Logo" />
-      <span
-        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-        >Portfolio</span
-      >
-    </a>
-    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <a
-        href="/docs/CV_AndresEscala.es.pdf"
-        target="_blank"
-        class="text-white bg-[#7634fa] hover:bg-[#6823f3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
-        >Descargar CV</a
-      >
-      <button
-        data-collapse-toggle="navbar-sticky"
-        type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-sticky"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Open main menu</span>
-        <svg
-          class="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"></path>
-        </svg>
-      </button>
-    </div>
-    <div
-      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-      id="navbar-sticky"
-    >
-      <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0"
-      >
-        <li>
-          <a
-            href="#home"
-            class="block py-2 px-3 text-white 0 rounded md:bg-transparent md:p-0 md:hover:text-[#7634fa] md:dark:hover:text-[#7634fa]"
-            aria-current="page">Inicio</a
-          >
-        </li>
-        <li>
-          <a
-            href="#experiencia"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#7634fa] md:p-0 md:dark:hover:text-[#7634fa] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Experiencia</a
-          >
-        </li>
-        <li>
-          <a
-            href="#projects"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#7634fa] md:p-0 md:dark:hover:text-[#7634fa] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-border"
-            >Proyectos</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contact-me"
-            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#7634fa] md:p-0 md:dark:hover:text-[#7634fa] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Contacto</a
-          >
-        </li>
-      </ul>
-    </div>
+---
+import { getTranslations, localizedPath, type Locale } from "../i18n";
+
+interface Props {
+  locale: string;
+  path?: string;
+}
+
+const { locale, path = "" } = Astro.props;
+const t = getTranslations(locale as Locale);
+
+const links = [
+  { href: "#experiencia", label: t.nav.experience },
+  { href: "#aes-studio", label: t.overview.title },
+  { href: "#certificaciones", label: t.nav.education },
+  { href: "#proyectos", label: t.nav.projects },
+  { href: "#contacto", label: t.nav.contact },
+];
+---
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Andres Escala — home">andres<b>.dev</b></a>
+
+      <div class="links">
+        {links.map((link) => <a class="h" href={link.href}>{link.label}</a>)}
+        <div class="lang" role="group" aria-label="Language / Idioma">
+          <a href={localizedPath("en", path)} hreflang="en" aria-current={locale === "en" ? "true" : undefined}>EN</a>
+          <span aria-hidden="true">/</span>
+          <a href={localizedPath("es", path)} hreflang="es" aria-current={locale === "es" ? "true" : undefined}>ES</a>
+        </div>
+        <button id="th" class="btn tg" type="button" aria-label={locale === "es" ? "Cambiar tema" : "Toggle theme"} title={locale === "es" ? "Cambiar tema" : "Toggle theme"}>◐</button>
+        <button id="nav-menu-toggle" class="menu-toggle" type="button" aria-controls="nav-menu" aria-expanded="false" aria-label={locale === "es" ? "Abrir menú" : "Open menu"}>
+          <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1h16M1 7h16M1 13h16" /></svg>
+        </button>
+      </div>
+    </nav>
   </div>
-</nav>
+
+  <div id="nav-menu" class="mobile-menu">
+    <a href="#home">{t.nav.home}</a>
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href="#stack">{t.nav.expertise}</a>
+  </div>
+</header>

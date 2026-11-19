@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/en</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/es</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/en/projects/finova</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/es/proyectos/finova</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/en/projects/keyforge</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/es/proyectos/keyforge</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/en/projects/profilecraft</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/es/proyectos/profilecraft</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/en/projects/chasqui</loc>
+  </url>
+  <url>
+    <loc>https://escalandres-portfolio.vercel.app/es/proyectos/chasqui</loc>
+  </url>
+</urlset>

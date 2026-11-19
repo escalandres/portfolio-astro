@@ -1,45 +1,40 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-const EXPERIENCIE = [
-  {
-    date: "Agosto 2024 - actualmente",
-    title: "GenO Intern - Oracle",
-    description:
-      "Participar en proyectos de integración de países de LATAM, ejecutar proyectos de innovación. Realizar seguimiento y gestionar el plan técnico en proyectos de implementación. Implementación de soluciones a nivel técnico en proyectos.",
-  },
-  {
-    date: "Noviembre 2022 - Agosto 2024",
-    title: "Becario Desarrollador Web - Info100 S.A de C.V",
-    description:
-      "Desarrollador de una aplicación web para la prevención de lavado de dinero con ASP.Net Framework, ASP.Net Razon y SQL Server. Y, creación de API REST con .Net 7; también, gestión de servidores CentOS 7",
-  },
-  {
-    date: "Agosto 2022 - Octubre 2022",
-    title: "Pasante - New Ventures",
-    description:
-      "Desarrollar un sistema de administración para almacenar los programas de impacto social de la empresa, en ClickUp. Y desarrollo de una landing page en WordPress para una nueva edición de programas de impacto social.",
-  },
-  {
-    date: "Marzo 2022 - Mayo 2022",
-    title: "Estudiante en Bootcamp - Innovaccion Virtual",
-    description:
-      "Desarrollar proyectos web Full Stack con HTML5, CSS3, JavaScript, Nodejs, GitHub y Azure.",
-  },
-  {
-    date: "Enero 2020 - actualmente",
-    title: "Proyectos académicos - Instituto Politécnico Nacional",
-    description:
-      "Desarrollo de aplicaciones y sistemas con C, Python; y tecnologías web como HTML5, CSS3, JavaScript, Bootstrap, Reactjs, Nodejs, Git y Github.",
-  },
-];
+import { getTranslations, type Locale } from "../i18n";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale as Locale);
+const items = t.experienceContent.items;
+const current = locale === "es" ? "Actualidad" : "Present";
 ---
 
-<ol class="relative border-s border-gray-200 ml-3">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="mb-10 ms-4">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
-  }
-</ol>
+<section id="experiencia">
+  <div class="eyebrow">{locale === "es" ? "Trayectoria" : "Career"}</div>
+  <h2>{t.experienceContent.heading}</h2>
+  <p class="sub">
+    {
+      locale === "es"
+        ? "De prácticas a consultoría técnica en una de las empresas de software más grandes del mundo."
+        : "From internships to technical consulting at one of the world's largest software companies."
+    }
+  </p>
+
+  <div class="tl">
+    {
+      items.map((item, i) => (
+        <div class="job rv" style={`--d:${i * 70}ms`}>
+          <small>
+            {item.period}
+            {item.current && ` · ${current}`}
+          </small>
+          <h3>{item.role}</h3>
+          <em>{item.company}</em>
+          <p>{item.points.slice(0, 2).join(" ")}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,94 @@
+---
+import { PROFILE } from "../data/profile";
+import { getTranslations, type Locale } from "../i18n";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const es = locale === "es";
+const t = getTranslations(locale as Locale);
+
+const apps = [
+  {
+    id: "keyforge",
+    name: "KeyForge",
+    description: es
+      ? "Administrador de licencias para cualquier producto digital. Generá, distribuí y gestioná licencias de manera eficiente."
+      : "License management for any digital product. Generate, distribute and manage licenses efficiently.",
+    icon: "/apps/keyforge-icon.svg",
+    preview: "/apps/keyforge-preview.webp",
+    url: "https://keyforge.aes-studio.dev",
+  },
+  {
+    id: "profile-craft",
+    name: "Profile Craft",
+    description: es
+      ? "Herramienta para crear y gestionar perfiles profesionales de manera sencilla y eficiente."
+      : "A tool to create and manage professional profiles simply and efficiently.",
+    icon: "/apps/profile-craft.svg",
+    preview: "/apps/profile-craft-preview.webp",
+    url: "https://profile-craft.aes-studio.dev",
+  },
+  {
+    id: "pcsuite",
+    name: "PCSuite",
+    description: es
+      ? "El Swiss Army Knife para Windows: antivirus, software, WSL, SSH, PGP, limpieza y seguridad, con Local Share para archivos en tu red local."
+      : "The Swiss Army Knife for Windows: antivirus, software, WSL, SSH, PGP, cleanup and security, with Local Share for files on your network.",
+    icon: "/pcsuite/assets/logo.svg",
+    preview: "/apps/pcsuite-preview.webp",
+    url: "https://aes-studio.dev/pcsuite/",
+  },
+];
+---
+
+<section id="aes-studio" class="d2-apps">
+  <div class="eyebrow">{es ? "APLICACIONES" : "APPS"}</div>
+  <h2>{es ? "Productos AES Studio" : "AES Studio apps"}</h2>
+  <p class="sub">
+    {
+      es
+        ? "Herramientas y productos construidos por AES Studio para operar mejor."
+        : "Tools and products built by AES Studio to work better."
+    }
+    <a class="aes-link" href={PROFILE.aesStudio} target="_blank" rel="noopener noreferrer">aes-studio.dev ↗</a>
+  </p>
+
+  <div class="card biz rv">
+    <div>
+      <h3>{es ? "Tecnología con IA para tu operación" : "AI-powered technology for your operation"}</h3>
+      <p>{t.overview.paragraphs[0]}</p>
+    </div>
+    <div class="svc">
+      {t.overview.focusItems.map((item) => <div><i></i>{item.title}</div>)}
+    </div>
+  </div>
+
+  <div class="d2-apps-grid">
+    {
+      apps.map((app, i) => (
+        <a
+          class="d2-app-card rv"
+          style={`--d:${i * 100}ms`}
+          href={app.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={app.name}
+        >
+          <div class="d2-app-card-preview">
+            <img src={app.preview} alt="" class="d2-app-card-img" loading="lazy" />
+          </div>
+          <div class="d2-app-card-body">
+            <div class="d2-app-card-header">
+              <img src={app.icon} alt="" class="d2-app-card-icon" loading="lazy" />
+              <h3 class="d2-app-card-name">{app.name}</h3>
+            </div>
+            <p class="d2-app-card-desc">{app.description}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

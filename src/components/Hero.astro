@@ -1,0 +1,104 @@
+---
+import { PROFILE } from "../data/profile";
+import { getTranslations, type Locale } from "../i18n";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale as Locale);
+const cvHref = locale === "es" ? PROFILE.cv.es : PROFILE.cv.en;
+const leadWords = t.hero.headlineLead.split(" ");
+const accentWords = t.hero.headlineAccent.split(" ");
+const marquee = ["React", "Node.js", ".NET", "SuiteScript", "SQL Server", "Azure", "Astro", "TypeScript", "Oracle Cloud", "Tailwind"];
+---
+
+<div class="hero" id="home">
+  <div class="hero-blobs" aria-hidden="true">
+    <span class="section-blob section-blob--1"></span>
+    <span class="section-blob section-blob--2"></span>
+    <span class="section-blob section-blob--3"></span>
+  </div>
+
+  <div class="hero-bg" aria-hidden="true">
+    <span class="code code-1">{ }</span>
+    <span class="code code-2">&lt;/&gt;</span>
+    <span class="code code-3">const x =</span>
+    <span class="code code-4">0 1 0 1</span>
+    <span class="code code-5">// TODO</span>
+    <span class="code code-6">npm run</span>
+    <span class="code code-7">git commit</span>
+    <span class="code code-8">[ ]</span>
+  </div>
+
+  <div>
+    <span class="tag hero-enter" style="--d:0ms"><i class="dot"></i>{t.hero.availability}</span>
+    <h1>
+      {
+        leadWords.map((word, i) => (
+          <span class="hero-word">
+            <span class="d2-hero-title-word-inner" style={`--d:${80 + i * 55}ms`}>{word}</span>
+          </span>
+        ))
+      }
+      {
+        accentWords.map((word) => (
+          <span class="g hero-word">
+            <span class="shiny-text">{word}</span>
+          </span>
+        ))
+      }
+    </h1>
+    <p class="lead hero-enter" style="--d:160ms">{t.hero.intro}</p>
+    <div class="cta hero-enter" style="--d:240ms">
+      <a class="btn p cta-amber d2-btn" href="#proyectos">
+        {t.hero.ctaExplore} <span class="d2-btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="btn" href={cvHref} download>{t.hero.ctaCv}</a>
+      <a
+        class="btn d2-footer-social-link"
+        href={PROFILE.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <LinkedInIcon /> <span>LinkedIn</span>
+      </a>
+      <a
+        class="btn d2-footer-social-link"
+        href={PROFILE.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <GitHubIcon /> <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+  <div class="mono hero-enter" style="--d:320ms">
+    <img src={PROFILE.photo} alt={`Retrato de ${t.hero.name}`} />
+  </div>
+</div>
+
+<div class="stats">
+  {
+    t.overview.facts.map((fact, i) => (
+      <div class="card rv" style={`--d:${i * 60}ms`}>
+        <b class="d2-hero-stat-value" style={`--d:${320 + i * 70}ms`}>
+          <span class="stat-glow" aria-hidden="true">{fact.value}</span>
+          <span class="stat-text">{fact.value}</span>
+        </b>
+        <span>{fact.label}</span>
+      </div>
+    ))
+  }
+</div>
+
+<div class="d2-marquee" aria-hidden="true">
+  <div class="d2-marquee-track">
+    {[...marquee, ...marquee].map((tech) => <span class="d2-marquee-item">{tech}</span>)}
+  </div>
+</div>

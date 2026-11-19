@@ -1,0 +1,14 @@
+---
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    © {year} Andres Escala · {locale === "es" ? "Ciudad de México" : "Mexico City"}
+  </div>
+</footer>

@@ -1,0 +1,49 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+  locale: string;
+}
+
+const { project: p, locale } = Astro.props;
+const es = locale === "es";
+const labels = es
+  ? { overview: "Resumen", highlights: "Aspectos clave", demo: "Ver demo ↗", code: "Código ↗", download: "Descargar ↗", play: "Jugar ↗", back: "Volver a proyectos" }
+  : { overview: "Overview", highlights: "Highlights", demo: "Live demo ↗", code: "Source ↗", download: "Download ↗", play: "Play ↗", back: "Back to projects" };
+---
+
+<article class="detail-top">
+  <a class="btn" href={`/${locale}/#proyectos`}>← {labels.back}</a>
+
+  <div class="eyebrow" style="margin-top:32px">{p.tagline}</div>
+  <h1>{p.title}</h1>
+  <p class="lead">{p.description}</p>
+
+  <img class="detail-shot" src={p.screenshot} alt={p.title} loading="lazy" />
+
+  <div class="chips">
+    {p.stack.map((tech) => <span class="chip">{tech}</span>)}
+  </div>
+
+  <div class="cta">
+    {p.links.demo && <a class="btn p" href={p.links.demo} target="_blank" rel="noopener noreferrer">{labels.demo}</a>}
+    {p.links.github && <a class="btn" href={p.links.github} target="_blank" rel="noopener noreferrer">{labels.code}</a>}
+    {p.links.download && <a class="btn" href={p.links.download} target="_blank" rel="noopener noreferrer">{labels.download}</a>}
+    {p.links.play && <a class="btn" href={p.links.play} target="_blank" rel="noopener noreferrer">{labels.play}</a>}
+  </div>
+
+  <div class="detail-block">
+    <div class="eyebrow">{labels.overview}</div>
+    <h2>{labels.overview}</h2>
+    {p.content.overview.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+
+  <div class="detail-block">
+    <div class="eyebrow">{labels.highlights}</div>
+    <h2>{labels.highlights}</h2>
+    <ul class="detail-list">
+      {p.content.highlights.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+</article>

@@ -1,0 +1,23 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="500" height="500" rx="80" ry="80" fill="#011536"/>
+
+  <g stroke-linejoin="round">
+    <!-- Techo (una sola cinta en chevron doble) -->
+    <polygon points="110,162 153,184 252,122 348,181 389,157 249,75" fill="#B5E3FD" stroke="#B5E3FD" stroke-width="1.5"/>
+
+    <!-- Cubo: cara superior -->
+    <polygon points="251,181 201,212 251,241 301,211" fill="#B5E3FD" stroke="#B5E3FD" stroke-width="1.5"/>
+    <!-- Cubo: cara izquierda -->
+    <polygon points="201,212 251,241 251,302 200,273" fill="#90D4FB" stroke="#90D4FB" stroke-width="1.5"/>
+    <!-- Cubo: cara derecha -->
+    <polygon points="251,241 301,211 302,273 251,302" fill="#008DE9" stroke="#008DE9" stroke-width="1.5"/>
+
+    <!-- Barra izquierda: cuerpo -->
+    <polygon points="110,162 153,184 152,301 111,326" fill="#90D4FB" stroke="#90D4FB" stroke-width="1.5"/>
+    <!-- Barra izquierda: punta -->
+    <polygon points="152,301 111,326 152,351" fill="#008DE9" stroke="#008DE9" stroke-width="1.5"/>
+
+    <!-- Check inferior -->
+    <polygon points="201,332 201,378 254,409 387,329 348,305 254,361" fill="#008DE9" stroke="#008DE9" stroke-width="1.5"/>
+  </g>
+</svg>

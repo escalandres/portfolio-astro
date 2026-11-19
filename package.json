@@ -7,16 +7,20 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update-astro": "npx astro@latest upgrade",
+    "force-clean": "pnpm store prune && rm -rf node_modules package-lock.json && npm install"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/node": "^7.0.4",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.0.1",
+    "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/onest": "^5.0.2",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
     "astro": "^4.1.1",
-    "resend": "^2.1.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   }

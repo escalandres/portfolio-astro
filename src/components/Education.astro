@@ -1,20 +1,54 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-const EXPERIENCIE = [
-  {
-    date: "Enero 2020 - actualmente",
-    title: "Ingeniería, Ingeniería en Telemática",
-    description: "Instituto Politecnico Nacional, Ciudad de México, México",
-  },
-];
+import { getTranslations, type Locale } from "../i18n";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const es = locale === "es";
+const t = getTranslations(locale as Locale);
+const { items, certifications } = t.education;
+
+const logoFor = (issuer: string) => {
+  if (issuer.includes("Microsoft")) return "/logos/azure.svg";
+  if (issuer.includes("Cloud Infrastructure")) return "/logos/oracle.png";
+  return "/logos/netsuite.svg";
+};
 ---
 
-<ol class="relative border-s border-gray-200 ml-3">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="mb-10 ms-4">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
-  }
-</ol>
+<section id="certificaciones">
+  <div class="eyebrow">{es ? "Formación y credenciales" : "Education & credentials"}</div>
+  <h2>{es ? "Formación y certificaciones" : "Education & certifications"}</h2>
+  <p class="sub">{t.education.subtitle}</p>
+
+  <h3 style="font-size:20px;margin:0 0 14px">{t.education.educationTitle}</h3>
+  <div class="grid" style="margin-bottom:42px">
+    {
+      items.map((item, i) => (
+        <div class="card rv" style={`--d:${i * 70}ms`}>
+          <h4 style="font-size:17px;margin:0 0 6px">{item.degree}</h4>
+          <p style="color:var(--muted);font-size:15px;margin:0">{item.institution}</p>
+          <p style="color:var(--s);font-size:14px;margin:8px 0 0">{item.period}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <h3 style="font-size:20px;margin:0 0 14px">{t.education.certificationsTitle}</h3>
+  <div class="grid">
+    {
+      certifications.map((cert, i) => (
+        <div class="card cert rv" style={`--d:${i * 50}ms`}>
+          <div class="ic">
+            <img src={logoFor(cert.issuer)} alt={cert.issuer} loading="lazy" />
+          </div>
+          <div>
+            <h4>{cert.name}</h4>
+            <p>{cert.issuer}{cert.period && ` · ${cert.period}`}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

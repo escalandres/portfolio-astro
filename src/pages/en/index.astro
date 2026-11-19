@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Overview from "../../components/Overview.astro";
+import Experience from "../../components/Experience.astro";
+import Projects from "../../components/Projects.astro";
+import Expertise from "../../components/Expertise.astro";
+import Education from "../../components/Education.astro";
+import Contact from "../../components/Contact.astro";
+import { getTranslations, localizedPath, type Locale } from "../../i18n";
+
+export const prerender = true;
+
+const locale = "en" as Locale;
+const path = "";
+const t = getTranslations(locale);
+const canonical = new URL(localizedPath(locale, path), Astro.site ?? Astro.url).toString();
+---
+
+<Layout title={t.meta.title} description={t.meta.description} canonical={canonical} locale={locale} path={path}>
+  <Hero locale={locale} />
+  <Experience locale={locale} />
+  <Expertise locale={locale} />
+  <Education locale={locale} />
+  <Overview locale={locale} />
+  <Projects locale={locale} />
+  <Contact locale={locale} />
+</Layout>

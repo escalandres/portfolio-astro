@@ -1,0 +1,44 @@
+---
+import { PROFILE } from "../data/profile";
+import { getTranslations, type Locale } from "../i18n";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const es = locale === "es";
+const t = getTranslations(locale as Locale);
+---
+
+<section id="contacto">
+  <div class="card ct rv">
+    <div class="eyebrow">{t.contact.eyebrow}</div>
+    <h2>{t.contact.title}</h2>
+    <p class="lead">{t.contact.message}</p>
+    <div class="cta">
+      <a class="btn p" href={`mailto:${PROFILE.email}`}>{es ? "Enviar correo" : "Send email"}</a>
+      <button class="btn" id="cp" type="button">{es ? "Copiar email" : "Copy email"}</button>
+      <a
+        class="btn d2-footer-social-link"
+        href={PROFILE.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <LinkedInIcon /> <span>LinkedIn</span>
+      </a>
+      <a
+        class="btn d2-footer-social-link"
+        href={PROFILE.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <GitHubIcon /> <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</section>

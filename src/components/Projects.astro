@@ -1,190 +1,46 @@
 ---
-import Tailwind from "./icons/Tailwind.astro";
-import Nodejs from "./icons/Nodejs.astro";
-import React from "./icons/React.astro";
-import NextJS from "./icons/NextJS.astro";
-import CSS from "./icons/CSS.astro";
-import HTML from "./icons/HTML.astro";
-import JavaScript from "./icons/JavaScript.astro";
-import EJS from "./icons/EJS.astro";
-import Electron from "./icons/Electron.astro";
-import ExpressJS from "./icons/ExpressJS.astro";
-import Bootstrap from "./icons/Bootstrap.astro";
-import Icon from "./Icon.astro";
-import GitHub from "./icons/GitHubIcon.astro";
-import Link from "./icons/Link.astro";
-import Bulma from "./icons/Bulma.astro";
-import StreamChat from "./icons/StreamChat.astro";
-import CSharp from "./icons/CSharp.astro";
-import Unity from "./icons/Unity.astro";
+import { getProjects } from "../data/projects";
+import { getTranslations, type Locale } from "../i18n";
 
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-  NODE: {
-    name: "Nodejs",
-    class: "bg-[#07702a] text-white",
-    icon: Nodejs,
-  },
-  REACT: {
-    name: "React",
-    class: "bg-[#166e7e] text-white",
-    icon: React,
-  },
-  CSS: {
-    name: "CSS",
-    class: "bg-[#178abb] text-white",
-    icon: CSS,
-  },
-  HTML: {
-    name: "HTML",
-    class: "bg-[#ac3b1c] text-white",
-    icon: HTML,
-  },
-  JAVASCRIPT: {
-    name: "JavaScript",
-    class: "bg-[#bda913] text-black",
-    icon: JavaScript,
-  },
-  EJS: {
-    name: "EJS",
-    class: "bg-[#f7df1e] text-black",
-    icon: EJS,
-  },
-  ELECTRON: {
-    name: "Electron",
-    class: "bg-[#47848f] text-white",
-    icon: Electron,
-  },
-  EXPRESSJS: {
-    name: "ExpressJS",
-    class: "bg-[#000000] text-white",
-    icon: ExpressJS,
-  },
-  BOOTSTRAP: {
-    name: "Bootstrap",
-    class: "bg-[#48009b] text-white",
-    icon: Bootstrap,
-  },
-  BULMA: {
-    name: "Bulma",
-    class: "bg-[#107c8f] text-white",
-    icon: Bulma,
-  },
-  STREAMCHAT: {
-    name: "StreamChat",
-    class: "bg-[#004ab1] text-white",
-    icon: StreamChat,
-  },
-  CSHARP: {
-    name: "C#",
-    class: "bg-[#1f0547] text-white",
-    icon: CSharp,
-  },
-  UNITY: {
-    name: "Unity",
-    class: "bg-[#000000] text-white",
-    icon: Unity,
-  },
-};
-const PROJECTS = [
-  {
-    title: "Cosmos - Tracking app",
-    description:
-      "Una aplicación web para rastrear contenedores de obras de arte, desarrollada con React y Node.js",
-    link: "https://app-rastreo-cosmos.netlify.app/",
-    github: "https://github.com/escalandres/app-rastreo-frontend",
-    image: "/projects/app-rastreo.webp",
-    tags: [TAGS.NODE, TAGS.REACT, TAGS.EXPRESSJS, TAGS.TAILWIND],
-  },
-  {
-    title: "MyYT_Downloader - Youtube videos downloader",
-    description:
-      "Una aplicación personal para descarga de vídeos de YouTube desarrollada en Node.js y Electron.js",
-    link: "https://drive.google.com/file/d/10IYTfZKYZA9uV8uWzYLsjdJ5XPVrGY_G/view?usp=drive_link",
-    github: "https://github.com/escalandres/myyt-downloader",
-    image: "/projects/myyt_downloader.webp",
-    tags: [TAGS.NODE, TAGS.BOOTSTRAP, TAGS.ELECTRON, TAGS.EXPRESSJS],
-  },
-  {
-    title: "Chat App Project - Personal chat app",
-    description:
-      "Aplicacion de Chat en tiempo real, inspirada en discord, creada con React, NodeJS, Stream Chat y Bulma",
-    link: "https://chat-app-project-ing-web.netlify.app/",
-    github: "https://github.com/escalandres/ChatAppProject",
-    image: "/projects/chatApp.webp",
-    tags: [TAGS.NODE, TAGS.REACT, TAGS.BULMA, TAGS.STREAMCHAT, TAGS.EXPRESSJS],
-  },
-  {
-    title: "PokeApi - Pokemon app",
-    description: "Mini aplicación de pokedex creada con la API de pokemon",
-    link: "https://escalandres.github.io/LaunchX_JS/",
-    github: "https://github.com/escalandres/LaunchX_JS",
-    image: "/projects/pokedex.webp",
-    tags: [TAGS.JAVASCRIPT, TAGS.CSS, TAGS.HTML],
-  },
-  {
-    title: "Vaccination - A landing page for vaccination centers",
-    description: "Landing page de un sitio de vacunación",
-    link: "https://escalandres.github.io/LaunchX_CSS/",
-    github: "https://github.com/escalandres/LaunchX_CSS",
-    image: "/projects/vaccine.webp",
-    tags: [TAGS.CSS, TAGS.HTML],
-  },
-  {
-    title: "Pixel Guardian",
-    description: "Mini juego desarrollado para Android y Windows",
-    link: "https://drive.google.com/drive/folders/1RFRAtVPoocVixAnOhCXb8PhnFbyPV_vD",
-    github: "",
-    image: "/projects/pixel-guardian.webp",
-    tags: [TAGS.UNITY, TAGS.CSHARP],
-  },
-];
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const currentLocale = (locale === "es" ? "es" : "en") as "en" | "es";
+const t = getTranslations(currentLocale as Locale);
+const projects = getProjects(currentLocale);
+
+const labels = currentLocale === "es"
+  ? { demo: "Ver demo ↗", code: "Código ↗", download: "Descargar ↗", play: "Jugar ↗" }
+  : { demo: "Live demo ↗", code: "Source ↗", download: "Download ↗", play: "Play ↗" };
 ---
 
-{
-  PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="mb-12">
-      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-        {title}
-      </h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-4">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        loading="lazy"
-        class="rounded shadow-2xl shadow-white/10 aspect-video"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
-      <nav class="flex gap-4 mt-4 flex-wrap">
-        {github !== "" ? (
-          <Icon href={github}>
-            <GitHub class="size-4 md:size-6" /> Repositorio
-          </Icon>
-        ) : null}
-        <Icon href={link}>
-          <Link class="size-4 md:size-6" /> Link
-        </Icon>
-      </nav>
-    </article>
-  ))
-}
+<section id="proyectos">
+  <div class="eyebrow">{t.projects.eyebrow}</div>
+  <h2>{t.projects.title}</h2>
+  <p class="sub">{t.projects.subtitle}</p>
+
+  <div class="grid">
+    {
+      projects.map((p, i) => (
+        <article class:list={["card", "pr", "rv", { big: p.big }]} style={`--d:${(i % 3) * 70}ms`}>
+          <img class="shot" src={p.screenshot} alt={p.title} loading="lazy" />
+          <h3>{p.title}</h3>
+          <p>{p.description}</p>
+          <div class="chips">
+            {p.stack.map((tech) => (
+              <span class="chip">{tech}</span>
+            ))}
+          </div>
+          <div class="ft">
+            {p.links.demo && <a href={p.links.demo} target="_blank" rel="noopener noreferrer">{labels.demo}</a>}
+            {p.links.github && <a href={p.links.github} target="_blank" rel="noopener noreferrer">{labels.code}</a>}
+            {p.links.download && <a href={p.links.download} target="_blank" rel="noopener noreferrer">{labels.download}</a>}
+            {p.links.play && <a href={p.links.play} target="_blank" rel="noopener noreferrer">{labels.play}</a>}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

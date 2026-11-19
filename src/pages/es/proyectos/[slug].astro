@@ -1,0 +1,34 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ProjectDetail from "../../../components/ProjectDetail.astro";
+import { getProjects } from "../../../data/projects";
+import { getTranslations, type Locale } from "../../../i18n";
+
+export async function getStaticPaths() {
+  return getProjects("es").map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+export const prerender = true;
+
+const { project } = Astro.props;
+const { slug } = Astro.params;
+const locale = "es" as Locale;
+const t = getTranslations(locale);
+const canonical = new URL(`/es/proyectos/${slug}`, Astro.site ?? Astro.url).toString();
+
+const title = `${project.title} — ${t.meta.title}`;
+---
+
+<Layout
+  title={title}
+  description={project.description}
+  canonical={canonical}
+  locale="es"
+  type="project"
+  path={`/proyectos/${slug}`}
+>
+  <ProjectDetail project={project} locale="es" />
+</Layout>

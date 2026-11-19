@@ -1,11 +1,25 @@
 ---
-const { class: className, id } = Astro.props;
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  class?: string;
+}
+
+const { id, title, description, class: className } = Astro.props;
 ---
 
-<section
-  id={id}
-  data-section={id}
-  class={`section ${className} w-full mx-auto lg:w-[920px] pb-20`}
->
-  <slot />
+<section id={id} data-section={id} class:list={["section", className]}>
+  <div class="wrap">
+    {
+      (title || description) && (
+        <header class="section-header reveal">
+          {title && <h2 class="section-title">{title}</h2>}
+          {description && <p class="section-lead">{description}</p>}
+        </header>
+      )
+    }
+    <slot />
+  </div>
 </section>
